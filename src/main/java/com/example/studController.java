@@ -1,8 +1,11 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class studController {
@@ -17,10 +20,18 @@ public class studController {
 	
 	
 	
-	
-//	public List<students> getAllStudents()
-//	{
-//		
-//	}
+	@GetMapping("/students")
+	public String getAllStudents(Model model)
+	{
+		List<String> studentNames= new ArrayList<>();
+		
+		studentNames.add("sathish");
+		studentNames.add("Ravi");
+		studentNames.add("Mahesh");
+		
+		model.addAttribute("students", studentNames);
+		
+		return "students-list";
+	}
 
 }
